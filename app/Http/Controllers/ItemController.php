@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Services\ItemService;
 use Exception;
 
-class ItemController extends Controller 
+class ItemController extends Controller
 {
     protected ItemService $svc;
 
-    public function __construct(ItemService $svc) 
+    public function __construct(ItemService $svc)
     {
         $this->svc = $svc;
     }
 
-    public function index() 
+    public function index()
     {
         return response()->json([
             'status' => 'success',
@@ -25,7 +26,7 @@ class ItemController extends Controller
         ]);
     }
 
-    public function store(StoreItemRequest $req) 
+    public function store(StoreItemRequest $req)
     {
         $item = $this->svc->create($req->validated());
 
@@ -36,7 +37,7 @@ class ItemController extends Controller
         ], 201);
     }
 
-    public function show($id) 
+    public function show($id)
     {
         try {
             $item = $this->svc->find($id);
@@ -55,7 +56,7 @@ class ItemController extends Controller
         }
     }
 
-    public function update(UpdateItemRequest $req, $id) 
+    public function update(UpdateItemRequest $req, $id)
     {
         $item = $this->svc->update($id, $req->validated());
 
@@ -66,7 +67,7 @@ class ItemController extends Controller
         ]);
     }
 
-    public function destroy($id) 
+    public function destroy($id)
     {
         $this->svc->delete($id);
 
