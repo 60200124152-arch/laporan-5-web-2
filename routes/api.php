@@ -18,5 +18,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::delete('items/{item}', 'App\Http\Controllers\ItemController@destroy')
         ->middleware('role:admin');
+        // Selesai praktikum sanctum auth - Zalzabilah
 
 });
