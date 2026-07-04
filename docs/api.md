@@ -21,6 +21,7 @@ PUT    /categories/{id} { name }
 DELETE /categories/{id} (admin only)
 
 ## Items
+GET /items?category_id={id}Description: Filter items by category, optional.
 GET    /items
 POST   /items { name, quantity, price, category_id }
 GET    /items/{id}
